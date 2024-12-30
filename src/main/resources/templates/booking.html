@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Booking Page - Ananya Travels</title>
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-image: url('https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+        background-size: cover;
+        background-position: center;
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 30px;
+        border-radius: 10px;
+        max-width: 600px;
+        margin: 100px auto;
+    }
+    h1 {
+        text-align: center;
+        color: #007bff;
+    }
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+    label {
+        margin-bottom: 8px;
+        font-size: 1.2em;
+    }
+    input, select {
+        padding: 10px;
+        margin-bottom: 20px;
+        font-size: 1em;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    .form-group {
+        display: flex;
+        flex-direction: column;
+    }
+    .submit-btn {
+        background-color: #007bff;
+        color: white;
+        padding: 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1.2em;
+    }
+    .submit-btn:hover {
+        background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Book Your Tour</h1>
+  <form id="bookingForm" action="/payment" method="POST">
+    <label for="clientId">Client ID</label>
+    <input type="text" id="clientId" name="clientId" th:value="${clientId}" required readonly>
+
+    <label for="tourId">Tour ID</label>
+    <input type="number" id="tourId" name="tourId" th:value="${tourId}" required min="1" readonly>
+
+    <label for="bookingDate">Booking Date</label>
+    <input type="date" id="bookingDate" name="bookingDate" th:value="${currentDate}" required>
+
+    <label for="noOfGuests">Number of Guests</label>
+    <input type="number" id="noOfGuests" name="noOfGuests" required>
+
+    <label for="vehicle">Select Vehicle</label>
+    <select id="vehicle" name="vehicle" required>
+      <option value="Car">Car</option>
+      <option value="Bus">Bus</option>
+    </select>
+
+    <!-- Hidden input to store pricePerHead -->
+
+
+    <label for="startDate">Start Date</label>
+    <input type="date" id="startDate" name="startDate" required>
+
+    <label for="discountCode">Discount Code</label>
+    <input type="text" id="discountCode" name="discountCode">
+    <input type="hidden" id="pricePerHead" th:value="${pricePerHead}" name="pricePerHead">
+
+    <div class="payment-method" id="abc">
+      <label for="abc">Choose Payment Method:</label><br>
+      <input type="radio" id="card" name="paymentMethod" value="Card" required>
+      <label for="Card">Card</label><br>
+      <input type="radio" id="upi" name="paymentMethod" value="UPI" required>
+      <label for="UPI">UPI</label><br>
+      <input type="radio" id="netbanking" name="paymentMethod" value="NetBanking" required>
+      <label for="NetBanking">Net Banking</label><br>
+    </div>
+
+    <button type="submit" class="submit-btn">Proceed to Payment</button>
+  </form>
+</div>
+
+<script>
+  document.getElementById("bookingForm").addEventListener("submit", function(event) {
+    var bookingDate = new Date(document.getElementById("bookingDate").value);
+    var startDate = new Date(document.getElementById("startDate").value);
+
+    // Check if startDate is greater than or equal to bookingDate
+    if (startDate < bookingDate) {
+      event.preventDefault(); // Prevent form submission
+      alert("Start Date must be greater than or equal to Booking Date!");
+    }
+  });
+  function getTodayDate() {
+    var today = new Date();
+    return today.toISOString().split('T')[0]; // Format as YYYY-MM-DD
+  }
+
+  // Add event listener to form submit
+  document.getElementById("bookingForm").addEventListener("submit", function(event) {
+    var bookingDate = document.getElementById("bookingDate").value;
+
+    // Get today's date
+    var todayDate = getTodayDate();
+
+    // Check if booking date is equal to today's date
+    if (bookingDate !== todayDate) {
+      event.preventDefault(); // Prevent form submission
+      alert("Booking Date must be today's date!"); // Show alert message
+    }
+  });
+</script>
+
+
+</body>
+</html>

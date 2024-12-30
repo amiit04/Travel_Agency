@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Client Profile - Ananya Travels</title>
+  <style>
+    /* Basic styling for the body and main container */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+
+    /* Profile container styling */
+    .profile-container {
+        width: 500px;
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .profile-container h2 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    /* Styling for profile information */
+    .profile-info {
+        margin-bottom: 15px;
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .profile-info label {
+        font-weight: bold;
+        color: #555;
+    }
+
+    .profile-info span {
+        display: block;
+        color: #333;
+        margin-top: 5px;
+    }
+
+    /* Styling for the orders link */
+    .view-orders-link {
+        display: block;
+        text-align: center;
+        margin-top: 20px;
+        color: #4CAF50;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .view-orders-link:hover {
+        text-decoration: underline;
+        color: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+<div class="profile-container">
+  <h2>Client Profile</h2>
+
+  <div class="profile-info">
+    <label>Client ID:</label>
+    <span th:text="${client.clientId}"></span>
+  </div>
+
+  <div class="profile-info">
+    <label>Full Name:</label>
+    <span th:text="${client.name}"></span>
+  </div>
+
+  <div class="profile-info">
+    <label>Email:</label>
+    <span th:text="${client.email}"></span>
+  </div>
+
+  <div class="profile-info">
+    <label>Phone Number:</label>
+    <span th:text="${client.phone}"></span>
+  </div>
+
+  <div class="profile-info">
+    <label>Address:</label>
+    <span th:text="${client.address}"></span>
+  </div>
+
+  <div class="profile-info">
+    <label>Date of Birth:</label>
+    <span th:text="${client.dob}"></span>
+  </div>
+
+  <div class="profile-info">
+    <label>Identity Type:</label>
+    <span th:text="${client.identityType}"></span>
+  </div>
+
+  <div class="profile-info">
+    <label>Identity Number:</label>
+    <span th:text="${client.identityNumber}"></span>
+  </div>
+
+  <div class="profile-info">
+    <label>Nationality:</label>
+    <span th:text="${client.nationality}"></span>
+  </div>
+
+  <!-- Link to view orders -->
+<!--  <a href="/my-orders" class="view-orders-link">View My Orders</a>-->
+</div>
+
+</body>
+</html>

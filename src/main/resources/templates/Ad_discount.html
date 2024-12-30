@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Discounts</title>
+  <style>
+    /* General styles */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #333;
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+
+    /* Add Discount button styling */
+    .button-container {
+      margin-bottom: 20px;
+    }
+
+    .button-container a button {
+      padding: 10px 20px;
+      font-size: 1em;
+      color: #fff;
+      background-color: #4CAF50;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .button-container a button:hover {
+      background-color: #45a049;
+    }
+
+    /* Table styling */
+    table {
+      width: 100%;
+      max-width: 800px;
+      border-collapse: collapse;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+      background-color: #fff;
+    }
+
+    th, td {
+      padding: 12px 15px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #4CAF50;
+      color: white;
+      font-weight: bold;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+
+    /* Delete button styling */
+    form button {
+      padding: 5px 10px;
+      font-size: 0.9em;
+      color: #fff;
+      background-color: #e74c3c;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    form button:hover {
+      background-color: #c0392b;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Available Discounts</h1>
+
+<!-- Add Discount Button -->
+<div class="button-container">
+  <a th:href="@{/admin/discounts/add}">
+    <button type="button">Add Discount</button>
+  </a>
+</div>
+
+<!-- Discounts Table -->
+<table>
+  <thead>
+  <tr>
+    <th>Discount ID</th>
+    <th>Discount Code</th>
+    <th>Discount Amount</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <!-- Iterate over each discount and display it in the table -->
+  <tr th:each="discount : ${discounts}">
+    <td th:text="${discount.discountCode}"></td>
+    <td th:text="${discount.description}"></td>
+    <td>
+      <!-- Delete form for each discount -->
+      <form th:action="@{/admin/discount/delete/{id}(id=${discount.discountCode})}" method="post">
+        <input type="hidden" name="_method" value="delete"/>
+        <button type="submit">Delete</button>
+      </form>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+</body>
+</html>

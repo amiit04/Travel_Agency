@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang = "en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Css Stylesheet -->
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" media=" screen and (max-width:768px)" href="/css/mobile.css"/>
+    <!-- unicons -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"/>
+    <!-- favicon -->
+    <link rel="icon" href="/Imgs/icons/Vector.png" />
+    <!-- script tag -->
+    <script defer src="/JS/script.js"></script>
+    <!-- ScrollReveal -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <!-- swiper js -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+    <!-- Title -->
+    <title>Travels</title>
+</head>
+<body>
+<!-- Showcase -->
+<main class="main" id="home">
+    <header class="header">
+        <div class="logo">
+            <p style="font-family: 'Arial', sans-serif; font-size: 36px; font-weight: bold; color: #2c3e50; text-align: center; letter-spacing: 2px; text-transform: uppercase;">Ananya Travels</p>
+        </div>
+        <!-- navbar -->
+        <nav class="navbar">
+            <ul class="navlists">
+                <li class="navlist"><a href="/">Home</a></li>
+                <li class="navlist"><a href="#destinations">Branches</a></li>
+                <li class="navlist"><a href="#abcd">About</a></li>
+                <li class="navlist"><a href="#bottom">Contact Us</a></li>
+                <li class="navlist" th:if="${user == null}"><a href="/register">Register</a></li>
+                <li class="navlist" th:if="${user == null}"><a href="/login">Login</a></li>
+                <li class="navlist" th:if="${user != null}"><a href="/profile">Profile</a></li>
+                <li class="navlist" th:if="${user != null}"><a href="/logout">Logout</a></li>
+
+            </ul>
+        </nav>
+
+        <div class="user-profile" th:if="${user != null}">
+            <div class="profile-section">
+                <div class="profile-pic">
+                    <a href="/profile">
+                        <img src="/Imgs/Logo/user_img.png" alt="User Icon"/>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </header>
+
+    <!-- showcase-content -->
+    <div class="showcase-content">
+        <h1>Discover the most engaging places</h1>
+        <a href="https://earth.google.com/web/" target="_blank" class="showcase-button">
+            <img src="/Imgs/icons/globe.png" alt="" /> Discover on 3D globe</a
+        >
+    </div>
+</main>
+<!-- popular Destinations -->
+<section class="destinations" id="destinations">
+    <div class="container">
+        <!-- title -->
+        <h2 class="section-title">Popular Destinations</h2>
+        <!-- cards -->
+
+        <div class="swiper swiper1">
+            <div class="destinations-cards swiper-wrapper">
+                <!-- card 1 -->
+                <div class="destination-card swiper-slide">
+                    <a href="/branch/1">
+                        <img
+                            src="https://images.unsplash.com/photo-1581790061118-2cd9a40164b0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2071&q=80"
+                            alt=""
+                            width="203"
+                            height="181"
+                        />
+                    </a>
+                    <h5>Varanasi</h5>
+                </div>
+                <!-- card 2 -->
+                <div class="destination-card swiper-slide">
+                    <a href="/branch/2">
+                    <img
+                            src="https://images.unsplash.com/photo-1527824404775-dce343118ebc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+                            alt=""
+                            width="203"
+                            height="181"
+                    />
+                    </a>
+                    <h5>Jaipur</h5>
+                </div>
+                <!-- card 3 -->
+                <div class="destination-card swiper-slide">
+                    <a href="/branch/3">
+                    <img
+                            src="https://images.unsplash.com/photo-1512936702668-1ab037aced2a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+                            alt=""
+                            width="203"
+                            height="181"
+                    />
+                    </a>
+                    <h5>Goa</h5>
+                </div>
+                <!-- card 4 -->
+                <div class="destination-card swiper-slide">
+                    <a href="/branch/4">
+                    <img
+                            src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1121&q=80"
+                            alt=""
+                            width="203"
+                            height="181"
+                    />
+                    </a>
+                    <h5>Ladakh</h5>
+                </div>
+                <!-- card 5 -->
+                <div class="destination-card swiper-slide">
+                    <a href="/branch/5">
+                    <img
+                            src="https://images.unsplash.com/photo-1601425262040-ba23fe84f701?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+                            alt=""
+                            width="203"
+                            height="181"
+                    />
+                    </a>
+                    <h5>Mumbai</h5>
+                </div>
+                <!-- card 6 -->
+                <div class="destination-card swiper-slide">
+                    <a href="/branch/6">
+                    <img
+                            src="https://images.unsplash.com/photo-1539037116277-4db20889f2d4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+                            alt=""
+                            width="203"
+                            height="181"
+                    />
+                    </a>
+                    <h5>Hyderabad</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Tours/Travel -->
+<section id="tours">
+    <div class="container">
+        <div class="title-container">
+            <h2 class="section-title"> Travel Tips and Advice</h2>
+            <div class="section-button hotel-button">view all <img src="/Imgs/icons/bleft.png" alt=""></div>
+        </div>
+        <div class="tours-cards">
+
+            <div class="tours-card">
+                <div class="tour-img">
+                    <img src="https://images.unsplash.com/photo-1527631746610-bca00a040d60?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="" width="320" height="380">
+                </div>
+                <div class="tours-card-content">
+                    <div class="tours-card-contents-text">
+                        <h3>East Village Ice Cream Crawl</h3>
+                        <p>We will stop at five different world-class ice cream shops on this 1.5 mile 1.5 hour tour. At each ice cream store we'll explore the story behind the business and see what makes the ice cream unique as you savor every…</p>
+                    </div>
+                    <div class="tours-card-content-icons">
+                        <h6><img src="/Imgs/icons/calendersml.png" alt=""> Today</h6>
+                        <h6><img src="/Imgs/icons/user.png" alt=""> Avenger Initiative</h6>
+                        <h6><img src="/Imgs/icons/message.png" alt=""> 2</h6>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tours-card">
+                <div class="tour-img">
+                    <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="" width="320" height="380">
+                </div>
+                <div class="tours-card-content">
+                    <div class="tours-card-contents-text">
+                        <h3>Brooklyn Bridge cinematic photo walk</h3>
+                        <p>This experience takes place at the Brooklyn Bridge Park and Brooklyn Bridge, but I’m always open to capture clients at different locations upon request for an additional charge. </p>
+                    </div>
+                    <div class="tours-card-content-icons">
+                        <h6><img src="/Imgs/icons/calendersml.png" alt=""> Today</h6>
+                        <h6><img src="/Imgs/icons/user.png" alt=""> Ager Pagla</h6>
+                        <h6><img src="/Imgs/icons/message.png" alt="">12</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- activities -->
+<section id="activities">
+    <div class="container">
+        <div class="title-container">
+            <h2 class="section-title"> Activities</h2>
+            <div class="section-button hotel-button">view all <img src="/Imgs/icons/bleft.png" alt=""></div>
+        </div>
+
+        <!-- Activities Cards -->
+        <div class="activities-cards">
+            <div class="activities-card">
+                <img src="https://images.unsplash.com/photo-1513432800008-a900568fccfe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="" width="320" height="380">
+                <h4>Sailing</h4>
+            </div>
+            <div class="activities-card">
+                <img src="https://images.unsplash.com/photo-1489805549589-3c5ae55fe740?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="" width="320" height="380">
+                <h4>Climbing</h4>
+            </div>
+            <div class="activities-card">
+                <img src="https://images.unsplash.com/photo-1565992441121-4367c2967103?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=627&q=80" alt="" width="320" height="380">
+                <h4>Skiing</h4>
+            </div>
+            <div class="activities-card">
+                <img src="https://images.unsplash.com/19/nomad.JPG?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1098&q=80" alt="" width="320" height="380">
+                <h4>Hiking</h4>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- about -->
+<section id="About">
+    <div class="about-content" id = "abcd">
+        <h2>About US</h2>
+        <p>
+            Ananya Travels is your trusted travel agency for affordable and unforgettable travel experiences. We are dedicated to helping you explore the world with customized travel packages that fit any budget. Whether you're looking for a relaxing getaway, a thrilling adventure, or a cultural journey, Ananya Travels has got you covered.
+        </p>
+
+        <div class="section-button hotel-button"><a href="/about">Read More </a><img src="/Imgs/icons/bleft.png" alt=""></div>
+    </div>
+
+    <div class="about-img">
+        <img src="/Imgs/about img.png" alt="" width="556" height="488">
+    </div>
+</section>
+
+<!-- footer -->
+<footer id = "bottom">
+    <div class="container">
+        <div class="footer-sections">
+            <div class="footer-section">
+                <p style="font-family: 'Arial', sans-serif; font-size: 36px; font-weight: bold; color: #2c3e50; text-align: center; letter-spacing: 2px; text-transform: uppercase;">
+                    Ananya Travels
+                </p>
+                <p>We always make our customers happy by providing as many choices as possible</p>
+                <div class="footer-social-icons">
+                    <img src="/Imgs/icons/facebook.png" alt="">
+                    <img src="/Imgs/icons/twitter.png" alt="">
+                    <img src="/Imgs/icons/instagram.png" alt="">
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3>About</h3>
+                <ul>
+                    <li><a href="/about">About Us</a></li>
+                    <li><a href="/contact">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="/about">why Ananya Travels</a></li>
+                    <li><a href="/faq">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="/profile">Account</a></li>
+                    <li><a href="/review">Feedback</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<div class="toggleOn"><i class="uil uil-align-center-alt"></i></div>
+<div class="toggleClose"><i class="uil uil-multiply"></i></div>
+</body>
+</html>

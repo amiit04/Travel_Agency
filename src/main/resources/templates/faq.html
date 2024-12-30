@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQs - Ananya Travels</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://images.unsplash.com/photo-1494526585095-c41746248156?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 10px;
+            max-width: 800px;
+            width: 100%;
+            margin: 20px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+        }
+        h1 {
+            text-align: center;
+            color: black;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        .accordion {
+            margin-top: 20px;
+        }
+        .accordion-item {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease-in-out;
+        }
+        .accordion-item:hover {
+            transform: scale(1.02);
+        }
+        .accordion-title {
+            padding: 20px;
+            cursor: pointer;
+            font-size: 1.2em;
+            font-weight: bold;
+            background-color: 	#f1c27d; 
+            color: black;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .accordion-title .icon {
+            font-size: 1.5em;
+            transition: transform 0.3s ease;
+        }
+        .accordion-title.active .icon {
+            transform: rotate(180deg);
+        }
+        .accordion-content {
+            display: none;
+            padding: 20px;
+            color: #666;
+            font-size: 1em;
+            line-height: 1.6;
+            border-top: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Frequently Asked Questions</h1>
+
+        <div class="accordion">
+            <!-- FAQ 1 -->
+            <div class="accordion-item">
+                <div class="accordion-title" onclick="toggleAccordion(this)">
+                    How do I make a booking with Ananya Travels?
+                    <span class="icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    To book a tour package with Ananya Travels, browse through our available packages, select your preferred package, and click "Book Now." You can complete the booking by providing necessary details and making the payment on the payment page.
+                </div>
+            </div>
+
+            <!-- FAQ 2 -->
+            <div class="accordion-item">
+                <div class="accordion-title" onclick="toggleAccordion(this)">
+                    Can I cancel or modify my booking?
+                    <span class="icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    Yes, bookings can be modified or canceled within a specified period prior to the start date. Please refer to our cancellation policy on the booking page or contact our customer support for assistance with modifications.
+                </div>
+            </div>
+
+            <!-- FAQ 3 -->
+            <div class="accordion-item">
+                <div class="accordion-title" onclick="toggleAccordion(this)">
+                    What payment methods are accepted?
+                    <span class="icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    We accept various payment methods, including credit cards, debit cards, and online banking. All transactions are secure and encrypted for your safety.
+                </div>
+            </div>
+
+            <!-- FAQ 4 -->
+            <div class="accordion-item">
+                <div class="accordion-title" onclick="toggleAccordion(this)">
+                    Are there any discounts available?
+                    <span class="icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    Yes, we occasionally offer promotional discounts and special offers. You can apply any valid discount code during booking to get a discount on the total price.
+                </div>
+            </div>
+
+            <!-- FAQ 5 -->
+            <div class="accordion-item">
+                <div class="accordion-title" onclick="toggleAccordion(this)">
+                    Do you offer travel insurance?
+                    <span class="icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    Yes, we offer optional travel insurance for a nominal fee, providing coverage for trip cancellations, medical emergencies, and more. Contact our support team for more details.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleAccordion(element) {
+            const content = element.nextElementSibling;
+            const isVisible = content.style.display === "block";
+
+            // Hide all other content sections and reset icons
+            document.querySelectorAll('.accordion-content').forEach((item) => {
+                item.style.display = 'none';
+            });
+            document.querySelectorAll('.icon').forEach((icon) => {
+                icon.innerText = '+';
+            });
+            
+            // Toggle current content and icon
+            content.style.display = isVisible ? "none" : "block";
+            element.querySelector(".icon").innerText = isVisible ? "+" : "-";
+            element.classList.toggle("active", !isVisible);
+        }
+    </script>
+
+</body>
+</html>

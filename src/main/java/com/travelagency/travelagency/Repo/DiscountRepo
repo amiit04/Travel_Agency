@@ -1,0 +1,15 @@
+package com.travelagency.travelagency.Repo;
+
+import com.travelagency.travelagency.entity.Discounts;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface DiscountsRepository extends JpaRepository<Discounts, String> {
+
+    // Custom query methods can be added if needed, for example:
+    Discounts findByDiscountCode(String discountCode);
+
+    // Optional: Find discounts that are currently valid
+    List<Discounts> findByValidFromBeforeAndValidToAfter(Date currentDate, Date currentDate);
+}

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit a Review - Ananya Travels</title>
+    <style>
+        /* Your existing styles here */
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #333;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(8px);
+            color: black;
+        }
+        h1 {
+            text-align: center;
+            color: #f1c27d;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+            color: black;
+            background-color: #f9f9f9;
+        }
+        .rating {
+            display: flex;
+            gap: 10px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #f1c27d;
+            color: black;
+            font-size: 1.1em;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #d9a87a;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Submit Your Review</h1>
+    <form id="reviewForm">
+        <label for="clientId">Client ID</label>
+        <input type="number" id="clientId" name="clientId" required>
+
+        <label for="bookingId">Booking ID</label>
+        <input type="number" id="bookingId" name="bookingId" required>
+
+        <label for="reviewTitle">Review Title</label>
+        <input type="text" id="reviewTitle" name="reviewTitle" placeholder="Title of your review" required>
+
+        <label for="rating">Rating</label>
+        <div class="rating">
+            <select id="rating" name="rating" required>
+                <option value="" disabled selected>Select a rating</option>
+                <option value="1">1 - Very Poor</option>
+                <option value="2">2 - Poor</option>
+                <option value="3">3 - Average</option>
+                <option value="4">4 - Good</option>
+                <option value="5">5 - Excellent</option>
+            </select>
+        </div>
+
+        <label for="comment">Comment</label>
+        <textarea id="comment" name="comment" rows="5" placeholder="Share your experience" required></textarea>
+
+        <label for="reviewDate">Review Date</label>
+        <input type="date" id="reviewDate" name="reviewDate" required>
+
+        <button type="submit">Submit Review</button>
+    </form>
+</div>
+
+<script>
+    document.getElementById('reviewForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent default form submission
+
+        // Gather form data
+        const reviewData = {
+            clientId: document.getElementById('clientId').value,
+            bookingId: document.getElementById('bookingId').value,
+            reviewTitle: document.getElementById('reviewTitle').value,
+            rating: document.getElementById('rating').value,
+            comment: document.getElementById('comment').value,
+            reviewDate: document.getElementById('reviewDate').value
+        };
+
+        // Convert to JSON
+        const jsonData = JSON.stringify(reviewData);
+
+        // Send data to the server using fetch
+        fetch('/submitReview', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: jsonData
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Handle the response
+            console.log('Success:', data);
+            alert('Review submitted successfully!');
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+            alert('There was an error submitting your review.');
+        });
+    });
+</script>
+
+</body>
+</html>

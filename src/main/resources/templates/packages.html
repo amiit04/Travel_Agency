@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Branch Tour Packages - Ananya Travels</title>
+    <style>
+        /* Basic styling */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+        }
+        header {
+            color: black;
+            padding: 1.5em;
+            text-align: center;
+            font-size: 1.5em;
+            margin-bottom: 30px;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .tour-package {
+            display: flex;
+            background-color: #fff;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .tour-image img {
+            width: 300px;
+            height: auto;
+            object-fit: cover;
+        }
+        .tour-details {
+            padding: 20px;
+            flex: 1;
+        }
+        .tour-details h2 {
+            color: #007bff;
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+        .tour-details p {
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        .book-now {
+            text-align: right;
+        }
+        .book-now a {
+            text-decoration: none;
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .book-now a:hover {
+            background-color: #0056b3;
+        }
+        footer {
+            color: #fff;
+            padding: 1em;
+            text-align: center;
+            margin-top: 30px;
+        }
+        /* Blinking text animation */
+        .blinking-text {
+            animation: blinking 1.5s infinite;
+        }
+        @keyframes blinking {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Discover Our Exciting Tour Packages</h1>
+    <p class="blinking-text">Explore beautiful destinations and book your next adventure with Ananya Travels!</p>
+</header>
+<div class="container">
+    <div th:each="tour : ${tours}" class="tour-package">
+        <div class="tour-details">
+            <h2 th:text="${tour.name}">Tour Name</h2>
+            <p>Price per Head: Rs.  <span th:text="${tour.pricePerHead}">100</span></p>
+            <p>Duration: <span th:text="${tour.duration}">3 days</span></p>
+
+            <!-- Display the location names with commas and bold styling -->
+            <p class="location-info">Locations:
+                <span th:each="locationName, iterStat : ${tour.locationNames}" th:text="${locationName}">Location</span>
+                <!-- Add a comma if there are more locations following the current one -->
+                <span >&nbsp</span>
+            </p>
+
+            <div class="book-now">
+                <a th:href="@{'/booking/' + ${tour.tourId}}">Book Now</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
