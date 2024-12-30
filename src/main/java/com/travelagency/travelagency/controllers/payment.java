@@ -6,11 +6,11 @@ import com.travelagency.travelagency.Repo.DiscountRepo;
 import com.travelagency.travelagency.Repo.ToursRepo;
 import com.travelagency.travelagency.entity.*;
 import com.travelagency.travelagency.Service.BookingService;
+import com.travelagency.travelagency.entity.Tours;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.text.SimpleDateFormat;
