@@ -1,0 +1,4 @@
+Java 19
+Spring Boot 3.3.4
+MySQL
+Maven 3.x
